@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <!-- import CSS -->
+            <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+            <style>
+                .bg-purple-dark {
+                        background: #99a9bf;
+                    }
+                .header-title{
+                   font-size: 24px;
+                   margin:0,auto; 
+                }
+                 .time {
+                        font-size: 13px;
+                        color: #999;
+                    }
+                    
+                    .bottom {
+                        margin-top: 13px;
+                        line-height: 12px;
+                        
+                    }
+
+                    .button {
+                        padding: 0;
+                        float: right;
+                        font-size: 24px;
+                        color: black;
+                    }
+
+                    .image {
+                        width: 100%;
+                        display: block;
+                    }
+
+                    .clearfix:before,
+                    .clearfix:after {
+                        display: table;
+                        content: "";
+                    }
+                    
+                    .clearfix:after {
+                        clear: both
+                    }
+                    .none-decoration{
+                        text-decoration: none;
+                    }
+                    .headertitle{
+                      font-size: 24px;
+                      margin:0,auto;
+                      text-align:center;
+                    }
+                    .el-header {
+                      background-color: #409EFF;
+                      line-height: 60px;
+                      
+                    }
+                    .menu{
+                      height:100vh
+                    }
+            </style>
+    </head>
+    <body style="margin: 0;">
+        <div id="app">
+       
+          <el-container>
+            <el-header>
+              <div class="headertitle">
+                新动力物联网监控平台
+              </div>
+          </el-header>
+
+            <el-container>
+              <el-aside width="200px">
+                <el-menu
+                default-active="2"
+                class="menu">
+                  <el-menu-item index="1" >
+                    <router-link class="none-decoration" to="/bigscreen" tag="div">
+                      <i class="el-icon-location"></i>
+                      智慧大屏
+                    </router-link>
+                  </el-menu-item>
+                <el-menu-item index="2">
+                  <router-link class="none-decoration" to="/deviceconnect" tag="div">
+                    <i class="el-icon-menu"></i>
+                  </router-link>
+                </el-menu-item>
+                <el-menu-item index="3">
+                  <router-link class="none-decoration" to="/devicemanage" tag="div">
+                    <i class="el-icon-document"></i>
+                    设备管理
+                  </router-link>
+                </el-menu-item>
+                <el-menu-item index="4">
+                  <router-link class="none-decoration" to="/datashow"  tag="div">
+                    <i class="el-icon-setting"></i>
+                    数据展示
+                </router-link>
+                </el-menu-item>
+              </el-menu>
+              </el-aside>
+              <el-main>
+                <div>
+                  <!-- 路由出口 -->
+                <!-- 路由匹配到的组件将渲染在这里 -->
+                <router-view></router-view>
+              </div>
+              </el-main>
+            </el-container>
+          </el-container>
+
+      </div>
+    </body>
+    <!-- import Vue before Element -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- import vue-router before Element -->
+    <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- import echarts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts-en.min.js"></script>
+    <script>
+        // 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+        // 1. 定义 (路由) 组件。
+        // 可以从其他文件 import 进来
+        const deviceconnect = { template: '<div>deviceconnect</div>' }
+        const devicemanage = { template: '<div>devicemanage</div>' }
+        const datashow = { template: '<div>datashow</div>' }
+
+        // 2. 定义路由
+        // 每个路由应该映射一个组件。 其中"component" 可以是
+        // 通过 Vue.extend() 创建的组件构造器，
+        // 或者，只是一个组件配置对象。
+        // 我们晚点再讨论嵌套路由。
+        const routes = [
+        { path: '/deviceconnect', component: deviceconnect },
+        { path: '/devicemanage', component: devicemanage },
+        { path: '/datashow', component: datashow }
+        ]
+
+        // 3. 创建 router 实例，然后传 `routes` 配置
+        // 你还可以传别的配置参数, 不过先这么简单着吧。
+        const router = new VueRouter({
+        routes // (缩写) 相当于 routes: routes
+        })
+
+        // 4. 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        // 从而让整个应用都有路由功能
+        const app = new Vue({
+        router
+        }).$mount('#app')
+
+        // 现在，应用已经启动了！
+    </script>
+</html>

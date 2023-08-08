@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <!-- import CSS -->
+            <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+            <style>
+                .bg-purple-dark {
+                        background: #99a9bf;
+                    }
+                .header-title{
+                   font-size: 24px;
+                   margin:0,auto; 
+                }
+                 .time {
+                        font-size: 13px;
+                        color: #999;
+                    }
+                    
+                    .bottom {
+                        margin-top: 13px;
+                        line-height: 12px;
+                        
+                    }
+
+                    .button {
+                        padding: 0;
+                        float: right;
+                        font-size: 24px;
+                        color: black;
+                    }
+
+                    .image {
+                        width: 100%;
+                        display: block;
+                    }
+
+                    .clearfix:before,
+                    .clearfix:after {
+                        display: table;
+                        content: "";
+                    }
+                    
+                    .clearfix:after {
+                        clear: both
+                    }
+            </style>
+    </head>
+    <body>
+        <div id="app">
+           <el-container>
+            <el-header class="bg-purple-dark">
+                        <P style="font-size:24px;margin:0 auto;text-align:center;padding-top:10px">新动力物联网监控系统
+                        </P>
+            </el-header>
+            <el-main>
+                    <el-row>
+                    <el-col :span="4">
+                        <el-card   :body-style="{ padding: '0px' }" style="width:200px;height:200px;background: #99a9bf;" >
+                        <div style="padding: 14px;">
+                            <div class="bottom clearfix"  @click="devicemanager">
+                            <el-button type="text" class="button">OPCUA设备管理</el-button>
+                            </div>
+                        </div>
+                        </el-card>
+                    </el-col>
+                    </el-row>
+
+
+            </el-main>
+
+
+
+           </el-container>
+  
+            
+      </div>
+    </body>
+    <!-- import Vue before Element -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- import vue-router before Element -->
+    <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- import echarts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts-en.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: function() {
+            return { 
+            visible: false ,
+
+             }},
+            methods: {
+                devicemanager(){
+                    console.log("devicemanager")
+                }                
+                
+            }
+
+            
+            })
+    </script>
+</html>
